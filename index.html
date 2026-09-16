@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academia RH Fitness | Transforme seu Corpo e Sua Saúde</title>
-    <!-- Importando fontes e ícones modernos -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Academia RH Fitness | Performance e Saúde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Importando o SDK do Google Gen AI via CDN Global -->
-    <script src="https://esm.run/@google/genai"></script>
     
     <style>
         :root {
-            --primary: #ff5722;
-            --primary-dark: #e64a19;
-            --dark: #121212;
-            --dark-card: #1e1e1e;
-            --light: #f4f4f4;
-            --gray: #888;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #090a0f;
+            --dark-card: #12141c;
+            --dark-surface: #1e2230;
+            --light: #f8fafc;
+            --gray: #94a3b8;
         }
 
         * {
@@ -32,6 +29,7 @@
         body {
             background-color: var(--dark);
             color: var(--light);
+            overflow-x: hidden;
         }
 
         /* Header / Navbar */
@@ -40,13 +38,15 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(18, 18, 18, 0.95);
+            background: rgba(9, 10, 15, 0.9);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
             z-index: 1000;
-            border-bottom: 2px solid #222;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -55,53 +55,52 @@
             color: var(--light);
             text-transform: uppercase;
             text-decoration: none;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            letter-spacing: 1px;
         }
 
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
+        .logo span { color: var(--primary); }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--light);
-            font-weight: 600;
-            transition: color 0.3s;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: var(--primary);
-        }
+        nav ul li a:hover { color: var(--light); }
 
         .btn-matricula {
             background-color: var(--primary);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 11px 24px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+            display: inline-block;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-matricula:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(37, 99, 235, 0.45);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(9,10,15,0.92), rgba(9,10,15,0.75)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -111,239 +110,214 @@
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 800;
             margin-bottom: 20px;
             text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        .hero h1 span {
-            color: var(--primary);
-        }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 18px; max-width: 650px; color: var(--gray); margin-bottom: 35px; font-weight: 400; line-height: 1.6; }
 
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        /* Sections General */
-        section {
-            padding: 100px 50px;
-        }
+        section { padding: 110px 50px; }
 
         .section-title {
             text-align: center;
             font-size: 36px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             text-transform: uppercase;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .section-title span {
-            color: var(--primary);
-        }
+        .section-title span { color: var(--primary); }
 
         /* Sobre */
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
             max-width: 1100px;
             margin: 0 auto;
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            line-height: 1.6;
-            color: #bbb;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
+        .about-text { flex: 1; }
+        .about-text p { line-height: 1.7; color: var(--gray); margin-bottom: 20px; font-size: 15px; }
         .about-img {
             flex: 1;
-            height: 350px;
+            height: 380px;
             background: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
-            border-radius: 10px;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.06);
         }
 
-        /* Modalidades / Serviços */
+        /* Modalidades */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
         }
 
         .service-card {
             background: var(--dark-card);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s, border 0.3s;
-            border: 1px solid #333;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--primary);
+            background: var(--dark-surface);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
-        .service-card i {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .service-video-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: #111;
         }
 
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .service-video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 0.5s ease;
         }
 
-        .service-card p {
-            color: var(--gray);
-            font-size: 14px;
-            line-height: 1.5;
+        .service-card:hover .service-video-container img {
+            transform: scale(1.05);
         }
+
+        .service-content {
+            padding: 25px 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-content h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; color: white; }
+        .service-content p { color: var(--gray); font-size: 13px; line-height: 1.6; }
 
         /* Planos */
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 30px;
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
         .plan-card {
             background: var(--dark-card);
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 40px 30px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 45px 30px;
             text-align: center;
             position: relative;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
         .plan-card.active {
             border-color: var(--primary);
-            transform: scale(1.05);
+            transform: scale(1.03);
+            background: var(--dark-surface);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
         }
 
-        .plan-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
+        .plan-card h3 { font-size: 22px; margin-bottom: 15px; font-weight: 700; }
+        .price { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 25px; }
+        .price span { font-size: 14px; color: var(--gray); font-weight: 500; }
+        .plan-card ul { list-style: none; margin-bottom: 35px; text-align: left; }
+        .plan-card ul li { margin-bottom: 12px; color: var(--gray); font-size: 14px; }
+        .plan-card ul li i { color: var(--primary); margin-right: 10px; }
 
-        .price {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .price span {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .plan-card ul {
-            list-style: none;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .plan-card ul li {
-            margin-bottom: 10px;
-            color: #bbb;
-            font-size: 14px;
-        }
-
-        .plan-card ul li i {
-            color: var(--primary);
-            margin-right: 8px;
-        }
-
-        /* Contato / Localização */
+        /* Matrícula / Pagamento */
         .contact-container {
             display: flex;
             justify-content: space-between;
             max-width: 1100px;
             margin: 0 auto;
-            gap: 50px;
+            gap: 60px;
         }
 
-        .contact-info {
-            flex: 1;
-        }
+        .contact-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .contact-info p { color: var(--gray); font-size: 15px; display: flex; align-items: center; gap: 15px; }
+        .contact-info i { color: var(--primary); font-size: 20px; }
 
-        .contact-form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .contact-form input, .contact-form textarea {
-            padding: 15px;
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form select {
+            padding: 16px;
             background: var(--dark-card);
-            border: 1px solid #333;
+            border: 1px solid rgba(255,255,255,0.08);
             color: white;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 14px;
+            transition: border-color 0.3s;
         }
-
-        .contact-form textarea {
-            resize: none;
-            height: 120px;
+        .contact-form input:focus, .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
         }
-
-        .contact-form button {
-            background: var(--primary);
+        .contact-form select option {
+            background: var(--dark-card);
             color: white;
-            border: none;
-            padding: 15px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
+        }
+        
+        .btn-center-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
         }
 
-        .contact-form button:hover {
-            background: var(--primary-dark);
+        .contact-form button.btn-matricula {
+            width: 100%;
+            max-width: 320px;
+            padding: 16px;
+            font-size: 15px;
+            text-align: center;
+            border-radius: 10px;
         }
 
-        /* TOAST / MODAL CENTRALIZADO NA TELA */
+        /* FEEDBACK COM SUCESSO E BONECO 2D SUPINO */
         #feedback-sucesso {
             opacity: 0;
             visibility: hidden;
-            transform: translate(-50%, -40%) scale(0.9);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: #181818;
+            transform: translate(-50%, -45%) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--dark-card);
             border: 2px solid var(--primary);
             color: white;
-            padding: 25px 35px;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 15px;
+            gap: 12px;
             font-weight: 600;
             font-size: 15px;
             position: fixed;
             top: 50%;
             left: 50%;
             z-index: 4000;
-            max-width: 400px;
             width: 90%;
+            max-width: 420px;
         }
 
         #feedback-sucesso.mostrar {
@@ -352,12 +326,37 @@
             transform: translate(-50%, -50%) scale(1);
         }
 
-        #feedback-sucesso i {
-            color: var(--primary);
-            font-size: 40px;
+        .pix-success-badge {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
         }
 
-        /* ESTILOS DO CHATBOT DE IA */
+        .supine-animation-container {
+            width: 140px;
+            height: 85px;
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes benchPress {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-22px); }
+        }
+
+        .animated-barbell {
+            animation: benchPress 1.2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        /* CHATBOT */
         .chat-btn {
             position: fixed;
             bottom: 25px;
@@ -370,16 +369,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 26px;
+            font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            z-index: 3000;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            z-index: 9999;
             transition: transform 0.3s;
         }
-
-        .chat-btn:hover {
-            transform: scale(1.1);
-        }
+        .chat-btn:hover { transform: scale(1.08); }
 
         .chat-container {
             position: fixed;
@@ -388,157 +384,94 @@
             width: 360px;
             height: 500px;
             background: var(--dark-card);
-            border: 1px solid #333;
-            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
             display: none;
             flex-direction: column;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
-            z-index: 3000;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            z-index: 9999;
             overflow: hidden;
         }
 
         .chat-header {
-            background: #181818;
-            padding: 15px;
+            background: var(--dark-surface);
+            padding: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
-        .chat-header h4 {
-            font-size: 16px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .chat-header h4 i {
-            color: var(--primary);
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: var(--gray);
-            font-size: 18px;
-            cursor: pointer;
-        }
+        .chat-header h4 { font-size: 15px; color: white; display: flex; align-items: center; gap: 8px; }
+        .chat-header h4 i { color: var(--primary); }
+        .close-chat { background: none; border: none; color: var(--gray); font-size: 18px; cursor: pointer; }
 
         .chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 16px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 12px;
             font-size: 13px;
         }
-
-        .message {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 8px;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-
-        .message.bot {
-            background: #262626;
-            color: #ddd;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
-
-        .message.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-        }
+        .message { max-width: 85%; padding: 10px 14px; border-radius: 10px; line-height: 1.4; word-wrap: break-word; }
+        .message.bot { background: var(--dark-surface); color: #e4e4e7; align-self: flex-start; }
+        .message.user { background: var(--primary); color: white; align-self: flex-end; }
 
         .chat-input-area {
             padding: 12px;
-            background: #181818;
+            background: var(--dark-surface);
             display: flex;
             gap: 8px;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-
         .chat-input-area input {
             flex: 1;
-            padding: 10px;
-            background: #121212;
-            border: 1px solid #333;
+            padding: 10px 14px;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.08);
             color: white;
             border-radius: 6px;
             font-size: 13px;
         }
-
+        .chat-input-area input:focus { outline: none; border-color: var(--primary); }
         .chat-input-area button {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0 15px;
+            padding: 0 16px;
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.3s;
         }
+        .chat-input-area button:hover { background: var(--primary-dark); }
 
-        .chat-input-area button:hover {
-            background: var(--primary-dark);
-        }
+        footer { background: #050608; text-align: center; padding: 25px; color: var(--gray); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        /* Footer */
-        footer {
-            background: #090909;
-            text-align: center;
-            padding: 20px;
-            color: var(--gray);
-            font-size: 14px;
-            border-top: 1px solid #222;
-            margin-top: 50px;
-        }
-
-        /* Responsivo básico */
         @media (max-width: 768px) {
             nav { display: none; }
             .about-content, .contact-container { flex-direction: column; }
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 36px; }
             .chat-container { width: 90%; right: 5%; height: 420px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- POPUP AUTOMÁTICO DE BOAS-VINDAS -->
-    <div id="popup-promo" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3500; justify-content: center; align-items: center;">
-        <div style="background: var(--dark-card); padding: 40px; border-radius: 10px; border: 2px solid var(--primary); text-align: center; max-width: 400px; position: relative; margin: 20px;">
-            <span onclick="fecharPopup()" style="position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; color: var(--gray);">&times;</span>
-            <i class="fa-solid fa-fire" style="font-size: 40px; color: var(--primary); margin-bottom: 15px;"></i>
-            <h3 style="font-size: 22px; margin-bottom: 10px; color: white;">PROMOÇÃO RELÂMPAGO!</h3>
-            <p style="color: var(--gray); font-size: 14px; margin-bottom: 20px; line-height: 1.5;">Cadastre-se hoje e ganhe condições especiais no Plano Semestral da RH Fitness!</p>
-            <a href="#planos" onclick="fecharPopup()" class="btn-matricula" style="display: inline-block;">Ver Planos</a>
-        </div>
-    </div>
-
-    <!-- CHATBOT FLUTUANTE IA -->
-    <div class="chat-btn" onclick="toggleChat()">
-        <i class="fa-solid fa-comments"></i>
-    </div>
+    <!-- CHATBOT FLUTUANTE -->
+    <div class="chat-btn" id="chatBtnToggle"><i class="fa-solid fa-comments"></i></div>
 
     <div class="chat-container" id="chatContainer">
         <div class="chat-header">
-            <h4><i class="fa-solid fa-robot"></i> Personal & Nutri IA - RH Fitness</h4>
-            <button class="close-chat" onclick="toggleChat()">&times;</button>
+            <h4><i class="fa-solid fa-robot"></i> Assistente RH Fitness</h4>
+            <button class="close-chat" id="chatCloseBtn">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot">Fala, maromba! Sou o assistente especialista da RH Fitness. Pode mandar qualquer dúvida sobre treinos, dietas, suplementos, emagrecimento ou ergogênicos. Como posso ajudar?</div>
+            <div class="message bot">Fala, maromba! Sou o assistente virtual da RH Fitness. Posso tirar dúvidas sobre treinos, planos, horários e suplementos. Como posso ajudar?</div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Pergunte sobre treino, dieta ou ergogênicos..." onkeypress="verificarEnter(event)">
-            <button onclick="enviarMensagemIA()"><i class="fa-solid fa-paper-plane"></i></button>
+            <input type="text" id="chatInput" placeholder="Digite sua dúvida...">
+            <button id="chatSendBtn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
 
@@ -552,50 +485,72 @@
                 <li><a href="#modalidades">Modalidades</a></li>
                 <li><a href="#planos">Planos</a></li>
                 <li><a href="#calculadora">Calculadora IMC</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#contato">Matrícula</a></li>
             </ul>
         </nav>
-        <a href="#planos" class="btn-matricula">Matricule-se</a>
+        <a href="#contato" class="btn-matricula">Matricule-se</a>
     </header>
 
-    <!-- TOPO / HERO -->
+    <!-- HERO -->
     <section id="home" class="hero">
         <h1>Supere Seus Limites na <span>RH Fitness</span></h1>
-        <p>Estrutura completa, equipamentos de ponta e acompanhamento profissional para você alcançar a sua melhor versão.</p>
-        <a href="#planos" class="btn-matricula" style="padding: 15px 30px; font-size: 16px;">Comece Agora</a>
+        <p>Estrutura completa, equipamentos de alta tecnologia e acompanhamento profissional para você alcançar a sua melhor versão.</p>
+        <a href="#contato" class="btn-matricula" style="padding: 14px 32px; font-size: 15px;">Comece Agora</a>
     </section>
 
-    <!-- SOBRE NÓS -->
+    <!-- SOBRE -->
     <section id="sobre">
         <h2 class="section-title">Sobre a <span>Academia</span></h2>
         <div class="about-content">
             <div class="about-text">
-                <p>A <strong>Academia RH Fitness</strong> foi criada com o propósito de transformar vidas através da reestruturação humana, saúde e bem-estar. Nossas instalações foram planejadas para oferecer total conforto e segurança na hora do seu treino.</p>
-                <p>Contamos com uma equipe altamente qualificada de profissionais prontos para montar fichas de treino personalizadas para os seus objetivos, seja hipertrofia, emagrecimento ou condicionamento físico geral.</p>
+                <p>A <strong>Academia RH Fitness</strong> foi estruturada com foco em excelência, alta performance e bem-estar. Nossos ambientes proporcionam total conforto e segurança.</p>
+                <p>Contamos com uma equipe de profissionais altamente capacitados para montar fichas customizadas para hipertrofia, emagrecimento ou condicionamento físico avançado.</p>
             </div>
             <div class="about-img"></div>
         </div>
     </section>
 
     <!-- MODALIDADES -->
-    <section id="modalidades" style="background: #161616;">
+    <section id="modalidades" style="background: #0e1017;">
         <h2 class="section-title">Nossas <span>Modalidades</span></h2>
         <div class="services-grid">
+            
             <div class="service-card">
-                <i class="fa-solid fa-dumbbell"></i>
-                <h3>Musculação</h3>
-                <p>Área de pesos livres e máquinas modernas para ganho de massa muscular e tonificação.</p>
+                <div class="service-video-container">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Musculação">
+                </div>
+                <div class="service-content">
+                    <div>
+                        <h3>Musculação</h3>
+                        <p>Área completa com pesos livres e máquinas de última geração para desenvolvimento de massa muscular.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="service-card">
-                <i class="fa-solid fa-heart-pulse"></i>
-                <h3>Treinamento Funcional</h3>
-                <p>Exercícios dinâmicos focados em movimentos naturais do corpo, agilidade e resistência.</p>
+                <div class="service-video-container">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Treinamento Funcional">
+                </div>
+                <div class="service-content">
+                    <div>
+                        <h3>Treinamento Funcional</h3>
+                        <p>Dinâmicas voltadas para agilidade, fortalecimento do core e otimização de movimentos naturais.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="service-card">
-                <i class="fa-solid fa-fire"></i>
-                <h3>Cardio & Condicionamento</h3>
-                <p>Esteiras, bikes e elípticos de última geração para cuidar da sua saúde cardiovascular.</p>
+                <div class="service-video-container">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80" alt="Cardio Avançado">
+                </div>
+                <div class="service-content">
+                    <div>
+                        <h3>Cardio Avançado</h3>
+                        <p>Esteiras, bikes e simuladores modernos para o máximo rendimento do seu sistema cardiorrespiratório.</p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -608,23 +563,21 @@
                 <div class="price">R$ 89,90 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Acesso livre à musculação</li>
-                    <li><i class="fa-solid fa-check"></i> Horário livre</li>
-                    <li><i class="fa-solid fa-check"></i> Avaliação física básica</li>
+                    <li><i class="fa-solid fa-check"></i> Horário flexível</li>
                 </ul>
-                <a href="#contato" class="btn-matricula" style="display: block; text-align: center;">Escolher Plano</a>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Mensal (R$ 89,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
             </div>
 
             <div class="plan-card active">
-                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); padding: 4px 15px; font-size: 12px; font-weight: bold; border-radius: 20px;">MAIS POPULAR</div>
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); padding: 4px 16px; font-size: 11px; font-weight: 700; border-radius: 20px; letter-spacing: 0.5px;">MAIS POPULAR</div>
                 <h3>Plano Semestral</h3>
                 <div class="price">R$ 74,90 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Acesso total à academia</li>
-                    <li><i class="fa-solid fa-check"></i> Acompanhamento de instrutores</li>
-                    <li><i class="fa-solid fa-check"></i> Avaliação física periódica</li>
-                    <li><i class="fa-solid fa-check"></i> Congele o plano por até 30 dias</li>
+                    <li><i class="fa-solid fa-check"></i> Acompanhamento com instrutores</li>
+                    <li><i class="fa-solid fa-check"></i> Congele por até 30 dias</li>
                 </ul>
-                <a href="#contato" class="btn-matricula" style="display: block; text-align: center;">Escolher Plano</a>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Semestral (R$ 74,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
             </div>
 
             <div class="plan-card">
@@ -632,139 +585,148 @@
                 <div class="price">R$ 64,90 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Todos os benefícios inclusos</li>
-                    <li><i class="fa-solid fa-check"></i> Desconto especial em parceiros</li>
-                    <li><i class="fa-solid fa-check"></i> Camisa oficial RH Fitness</li>
+                    <li><i class="fa-solid fa-check"></i> Camisa exclusiva RH Fitness</li>
                 </ul>
-                <a href="#contato" class="btn-matricula" style="display: block; text-align: center;">Escolher Plano</a>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Anual VIP (R$ 64,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
             </div>
         </div>
     </section>
 
-    <!-- CALCULADORA DE IMC -->
-    <section id="calculadora" style="background: #161616; text-align: center;">
-        <h2 class="section-title">Calcule seu <span>IMC</span></h2>
-        <p style="color: var(--gray); margin-bottom: 30px;">Descubra como está o seu índice de massa corporal agora mesmo.</p>
-        
-        <div style="max-width: 450px; margin: 0 auto; background: var(--dark-card); padding: 30px; border-radius: 10px; border: 1px solid #333;">
+    <!-- CALCULADORA IMC -->
+    <section id="calculadora" style="background: #0e1017; text-align: center;">
+        <h2 class="section-title">Calculadora de <span>IMC</span></h2>
+        <div style="max-width: 450px; margin: 0 auto; background: var(--dark-card); padding: 35px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.06);">
             <div style="margin-bottom: 15px; text-align: left;">
-                <label style="font-size: 14px; color: #bbb; display: block; margin-bottom: 5px;">Peso (kg)</label>
-                <input type="number" id="peso" placeholder="Ex: 70" step="0.1" style="width: 100%; padding: 12px; background: #121212; border: 1px solid #333; color: white; border-radius: 5px;">
+                <label style="font-size: 13px; color: var(--gray); display: block; margin-bottom: 6px;">Peso (kg)</label>
+                <input type="number" id="peso" placeholder="Ex: 70" step="0.1" style="width: 100%; padding: 14px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
             </div>
-            
             <div style="margin-bottom: 20px; text-align: left;">
-                <label style="font-size: 14px; color: #bbb; display: block; margin-bottom: 5px;">Altura (m)</label>
-                <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" style="width: 100%; padding: 12px; background: #121212; border: 1px solid #333; color: white; border-radius: 5px;">
+                <label style="font-size: 13px; color: var(--gray); display: block; margin-bottom: 6px;">Altura (m)</label>
+                <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" style="width: 100%; padding: 14px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
             </div>
-            
-            <button onclick="calcularIMC()" style="width: 100%; background: var(--primary); color: white; border: none; padding: 12px; font-weight: 600; border-radius: 5px; cursor: pointer; transition: background 0.3s;">Calcular IMC</button>
-            
-            <div id="resultado-imc" style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--light);"></div>
+            <button id="btnCalcularIMC" style="width: 100%; background: var(--primary); color: white; border: none; padding: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background 0.3s; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);">Calcular IMC</button>
+            <div id="resultado-imc" style="margin-top: 20px; font-size: 15px; font-weight: 600;"></div>
         </div>
     </section>
 
-    <!-- CONTATO E LOCALIZAÇÃO -->
+    <!-- CONTATO / MATRÍCULA -->
     <section id="contato">
-        <h2 class="section-title">Fale <span>Conosco</span></h2>
+        <h2 class="section-title">Faça sua <span>Matrícula</span></h2>
         <div class="contact-container">
             <div class="contact-info">
-                <div style="display: flex; align-items: center; margin-bottom: 25px;">
-                    <i class="fa-solid fa-location-dot" style="font-size: 24px; color: var(--primary); margin-right: 15px;"></i>
-                    <p>Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP, 05775-120</p>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 25px;">
-                    <i class="fa-solid fa-phone" style="font-size: 24px; color: var(--primary); margin-right: 15px;"></i>
-                    <p>(11) 99999-9999</p>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 25px;">
-                    <i class="fa-solid fa-envelope" style="font-size: 24px; color: var(--primary); margin-right: 15px;"></i>
-                    <p>contato@rhfitness.com.br</p>
-                </div>
+                <p><i class="fa-solid fa-location-dot"></i> Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP</p>
+                <p><i class="fa-solid fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fa-solid fa-envelope"></i> contato@rhfitness.com.br</p>
+                <p><i class="fa-solid fa-shield-check"></i> Pagamento 100% seguro e processado instantaneamente.</p>
             </div>
             
-            <form class="contact-form" onsubmit="enviarMensagemForm(event)">
-                <input type="text" placeholder="Seu Nome" required>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Seu Nome Completo" required>
+                <input type="text" id="inputCpf" placeholder="CPF (Ex: 000.000.000-00)" required>
                 <input type="email" placeholder="Seu E-mail" required>
-                <textarea placeholder="Sua Mensagem ou Dúvida" required></textarea>
-                <button type="submit">Enviar Mensagem</button>
+                
+                <select id="planoSelecionado" required>
+                    <option value="" disabled selected>Plano Selecionado</option>
+                    <option value="Plano Mensal (R$ 89,90/mês)">Plano Mensal (R$ 89,90/mês)</option>
+                    <option value="Plano Semestral (R$ 74,90/mês)">Plano Semestral (R$ 74,90/mês)</option>
+                    <option value="Plano Anual VIP (R$ 64,90/mês)">Plano Anual VIP (R$ 64,90/mês)</option>
+                </select>
+
+                <select id="formaPagamento" required>
+                    <option value="" disabled selected>Selecione a Forma de Pagamento</option>
+                    <option value="pix">PIX (Aprovação Instantânea)</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+                
+                <div class="btn-center-wrapper">
+                    <button type="submit" class="btn-matricula">Concluir Matrícula</button>
+                </div>
             </form>
         </div>
     </section>
 
-    <!-- CARD MODAL CENTRALIZADO DE SUCESSO -->
+    <!-- FEEDBACK SUCESSO + PIX + BONECO SUPINO -->
     <div id="feedback-sucesso">
+        <div class="pix-success-badge"><i class="fa-solid fa-check-circle"></i> PIX Realizado com Sucesso!</div>
         <i class="fa-solid fa-circle-check"></i>
-        <span>Mensagem enviada com sucesso! Entraremos em contato em breve.</span>
+        <span>Matrícula confirmada! Bem-vindo à RH Fitness.</span>
+        
+        <div class="supine-animation-container">
+            <svg width="130" height="85" viewBox="0 0 130 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="55" width="80" height="8" rx="3" fill="#3f3f46"/>
+                <rect x="40" y="63" width="8" height="18" rx="2" fill="#27272a"/>
+                <rect x="82" y="63" width="8" height="18" rx="2" fill="#27272a"/>
+                
+                <ellipse cx="65" cy="50" rx="9" ry="7" fill="#f4f4f5"/>
+                <rect x="52" y="45" width="26" height="12" rx="4" fill="#2563eb"/>
+                <line x1="56" y1="47" x2="45" y2="32" stroke="#f4f4f5" stroke-width="4" stroke-linecap="round"/>
+                <line x1="74" y1="47" x2="85" y2="32" stroke="#f4f4f5" stroke-width="4" stroke-linecap="round"/>
+
+                <g class="animated-barbell">
+                    <line x1="30" y1="30" x2="100" y2="30" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+                    <rect x="26" y="22" width="6" height="16" rx="2" fill="#2563eb"/>
+                    <rect x="98" y="22" width="6" height="16" rx="2" fill="#2563eb"/>
+                </g>
+            </svg>
+        </div>
     </div>
 
-    <!-- RODAPÉ -->
-    <footer>
-        <p>&copy; 2026 Academia RH Fitness. Todos os direitos reservados.</p>
-    </footer>
+    <footer><p>&copy; 2026 Academia RH Fitness. Todos os direitos reservados.</p></footer>
 
-    <!-- SCRIPT DA INTELIGÊNCIA ARTIFICIAL -->
+    <!-- SCRIPTS -->
     <script>
-        const ai = new GoogleGenAI({ apiKey: "SUA_API_KEY_AQUI" });
-        let historicoChat = [];
+        const chatContainer = document.getElementById('chatContainer');
+        const chatBtnToggle = document.getElementById('chatBtnToggle');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
 
-        window.toggleChat = function() {
-            const chat = document.getElementById('chatContainer');
-            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
-        }
+        chatBtnToggle.addEventListener('click', () => chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex');
+        chatCloseBtn.addEventListener('click', () => chatContainer.style.display = 'none');
 
-        window.verificarEnter = function(event) {
-            if (event.key === 'Enter') {
-                enviarMensagemIA();
+        const chatInput = document.getElementById('chatInput');
+        const chatSendBtn = document.getElementById('chatSendBtn');
+
+        // FUNÇÃO DE FILTRO RESTRITO AO ASSUNTO DE ACADEMIA
+        function obterRespostaBot(mensagem) {
+            const texto = mensagem.toLowerCase();
+            
+            // Palavras-chave permitidas relacionadas à academia, treinos, planos, horários, localização, etc.
+            const permitidas = [
+                'treino', 'exercicio', 'musculacao', 'funcional', 'cardio', 'peso', 'massa', 
+                'hipertrofia', 'emagrecimento', 'plano', 'preco', 'valor', 'mensalidade', 
+                'horario', 'funciona', 'abre', 'endereco', 'onde', 'local', 'matricula', 
+                'suplemento', 'academia', 'imc', 'pagamento', 'pix', 'cartao', 'boleto', 'ola', 'oi', 'bom dia', 'boa tarde', 'boa noite'
+            ];
+
+            // Verifica se a mensagem contém pelo menos uma palavra do universo de academia
+            const assuntoValido = permitidas.some(termo => texto.includes(termo));
+
+            if (!assuntoValido) {
+                return "Opa, foco no treino! Só consigo responder dúvidas referentes à <strong>Academia RH Fitness</strong>, planos, horários ou exercícios. Como posso te ajudar com seu shape hoje?";
+            }
+
+            if (texto.includes('treino') || texto.includes('exercicio') || texto.includes('musculacao')) {
+                return "Para ótimos resultados, foque em uma execução perfeita. Nossa área de musculação e funcional está completa para te receber!";
+            } else if (texto.includes('plano') || texto.includes('preco') || texto.includes('valor') || texto.includes('mensalidade')) {
+                return "Temos o Plano Mensal (R$ 89,90), Semestral (R$ 74,90/mês - o mais popular) e Anual VIP (R$ 64,90/mês). Qual deles encaixa melhor na sua rotina?";
+            } else if (texto.includes('horario') || texto.includes('funciona') || texto.includes('abre')) {
+                return "Atendemos de segunda a sexta das 06h às 22h, e aos sábados das 08h às 14h.";
+            } else if (texto.includes('endereco') || texto.includes('onde') || texto.includes('local')) {
+                return "Nosso endereço é Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP.";
+            } else {
+                return "Perfeito, maromba! Se precisar de detalhes sobre nossos planos, valores ou fichas de treino, é só mandar aqui.";
             }
         }
 
-        window.enviarMensagemIA = async function() {
-            const input = document.getElementById('chatInput');
-            const texto = input.value.trim();
+        function enviarMensagem() {
+            const texto = chatInput.value.trim();
             if (!texto) return;
-
             adicionarMensagem(texto, 'user');
-            input.value = '';
-
-            const messagesDiv = document.getElementById('chatMessages');
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'message bot';
-            loadingDiv.id = 'loadingBot';
-            loadingDiv.innerHTML = '<i>Analisando protocolo...</i>';
-            messagesDiv.appendChild(loadingDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-            try {
-                const systemInstruction = `Você é o personal trainer e consultor de performance oficial, direto e especialista da "Academia RH Fitness". 
-                Você tem total liberdade para responder perguntas profundas e técnicas sobre:
-                - Musculação, divisões de treino (ABCDE, Upper/Lower), técnicas avançadas de intensidade (drop-set, falha).
-                - Dietas, bulking, cutting, contagem de macronutrientes, calorias e estratégias nutricionais.
-                - Suplementação esportiva (Creatina, Whey, Pré-treino, Termogênicos).
-                - Uso de medicamentos, hormônios, anabolizantes e recursos ergogênicos para ganho de massa ou emagrecimento (forneça informações objetivas, baseadas no fisiculturismo, riscos colaterais e reduções de danos, mantendo um tom realista e profissional de academia).
-                - Dados da academia: Endereço (Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP, 05775-120), Horários (Seg-Sex 06h às 22h, Sáb 08h às 14h) e Planos (Mensal R$ 89,90, Semestral R$ 74,90, Anual VIP R$ 64,90).
-                Se o usuário perguntar sobre assuntos totalmente fora de academia, dieta, saúde ou fitness, oriente gentilmente o foco para o universo maromba. Responda sempre em português com tom amigável, direto e motivador.`;
-
-                const chat = ai.chats.create({
-                    model: 'gemini-2.5-flash',
-                    config: {
-                        systemInstruction: systemInstruction,
-                    },
-                    history: historicoChat
-                });
-
-                const result = await chat.sendMessage({ message: texto });
-                const respostaTexto = result.text;
-
-                document.getElementById('loadingBot').remove();
-                adicionarMensagem(respostaTexto, 'bot');
-
-                historicoChat.push({ role: 'user', parts: [{ text: texto }] });
-                historicoChat.push({ role: 'model', parts: [{ text: respostaTexto }] });
-
-            } catch (error) {
-                console.error(error);
-                document.getElementById('loadingBot').remove();
-                adicionarMensagem("Eita, deu uma falha aqui na conexão com o servidor. Verifique se a sua API Key está correta!", 'bot');
-            }
+            chatInput.value = '';
+            setTimeout(() => {
+                const resposta = obterRespostaBot(texto);
+                adicionarMensagem(resposta, 'bot');
+            }, 500);
         }
 
         function adicionarMensagem(texto, remetente) {
@@ -775,66 +737,61 @@
             messagesDiv.appendChild(msgDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
-    </script>
 
-    <!-- SCRIPTS EXTRAS DA PÁGINA -->
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('popup-promo').style.display = 'flex';
-            }, 1000);
+        chatSendBtn.addEventListener('click', enviarMensagem);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') enviarMensagem(); });
+
+        // Selecionar plano automaticamente e rolar até a matrícula
+        const botoesPlano = document.querySelectorAll('.btn-escolher-plano');
+        const selectPlanoMatricula = document.getElementById('planoSelecionado');
+
+        botoesPlano.forEach(botao => {
+            botao.addEventListener('click', function(e) {
+                e.preventDefault();
+                const planoEscolhido = this.getAttribute('data-plano');
+                selectPlanoMatricula.value = planoEscolhido;
+                document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+            });
         });
 
-        function fecharPopup() {
-            document.getElementById('popup-promo').style.display = 'none';
-        }
+        // Máscara de CPF
+        const inputCpf = document.getElementById('inputCpf');
+        inputCpf.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 9) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{3})(\d{3})(\d{3}).*/, '$1.$2.$3');
+            } else if (value.length > 3) {
+                value = value.replace(/^(\d{3})(\d{3}).*/, '$1.$2');
+            }
+            e.target.value = value;
+        });
 
-        // Função do formulário exibindo o card centralizado na tela
-        function enviarMensagemForm(event) {
-            event.preventDefault();
-            
+        // Envio do formulário
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             const feedback = document.getElementById('feedback-sucesso');
-            const form = event.target;
-
-            // Mostra o card com animação suave no meio
             feedback.classList.add('mostrar');
+            this.reset();
+            setTimeout(() => feedback.classList.remove('mostrar'), 4800);
+        });
 
-            // Limpa os campos do formulário
-            form.reset();
-
-            // Esconde o card automaticamente após 3.5 segundos
-            setTimeout(function() {
-                feedback.classList.remove('mostrar');
-            }, 3500);
-        }
-
-        function calcularIMC() {
+        // Calculadora de IMC
+        document.getElementById('btnCalcularIMC').addEventListener('click', function() {
             const peso = parseFloat(document.getElementById('peso').value);
             const altura = parseFloat(document.getElementById('altura').value);
-            const resultadoDiv = document.getElementById('resultado-imc');
-
+            const res = document.getElementById('resultado-imc');
             if (!peso || !altura || peso <= 0 || altura <= 0) {
-                resultadoDiv.innerHTML = "Por favor, insira valores válidos!";
-                resultadoDiv.style.color = "#ff5722";
+                res.innerHTML = "Insira peso e altura válidos!";
+                res.style.color = "#2563eb";
                 return;
             }
-
             const imc = peso / (altura * altura);
-            let classificacao = "";
-
-            if (imc < 18.5) {
-                classificacao = "Abaixo do peso";
-            } else if (imc >= 18.5 && imc < 24.9) {
-                classificacao = "Peso normal (Parabéns!)";
-            } else if (imc >= 25 && imc < 29.9) {
-                classificacao = "Sobrepeso";
-            } else {
-                classificacao = "Obesidade (Consulte um profissional)";
-            }
-
-            resultadoDiv.innerHTML = `Seu IMC é ${imc.toFixed(2)} - <span style="color: var(--primary);">${classificacao}</span>`;
-            resultadoDiv.style.color = "white";
-        }
+            res.innerHTML = `Seu IMC é ${imc.toFixed(2)}`;
+            res.style.color = "white";
+        });
     </script>
 </body>
 </html>
