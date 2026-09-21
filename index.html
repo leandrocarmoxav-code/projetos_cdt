@@ -3,104 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academia RH Fitness | Performance e Saúde</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Academia RH Fitness</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --dark: #090a0f;
-            --dark-card: #12141c;
-            --dark-surface: #1e2230;
-            --light: #f8fafc;
-            --gray: #94a3b8;
+            --primary: #d4af37;
+            --primary-dark: #a67c00;
+            --accent: #f5d76e;
+            --dark: #050505;
+            --dark-card: #101010;
+            --dark-surface: #191919;
+            --gray: #b9b9b9;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --warning: #f59e0b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--dark);
-            color: var(--light);
+            color: #f8fafc;
             overflow-x: hidden;
         }
 
-        /* Header / Navbar */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(9, 10, 15, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(6, 9, 20, 0.94);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 15px 5%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 800;
-            color: var(--light);
-            text-transform: uppercase;
+            color: white;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
         }
 
-        .logo span { color: var(--primary); }
+        .logo span {
+            color: var(--primary);
+        }
 
+        /* MENU DESKTOP E MOBILE */
         nav ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 25px;
+            align-items: center;
         }
 
-        nav ul li a {
+        nav a {
             text-decoration: none;
             color: var(--gray);
-            font-weight: 500;
             font-size: 14px;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        nav ul li a:hover { color: var(--light); }
+        nav a:hover {
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
 
         .btn-matricula {
-            background-color: var(--primary);
+            background: var(--primary);
             color: white;
-            padding: 11px 24px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
-            display: inline-block;
-            cursor: pointer;
             border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
         }
 
         .btn-matricula:hover {
-            background-color: var(--primary-dark);
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 22px rgba(37, 99, 235, 0.45);
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(9,10,15,0.92), rgba(9,10,15,0.75)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(4, 8, 22, 0.62), rgba(3, 7, 18, 0.94)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -110,168 +122,328 @@
         }
 
         .hero h1 {
-            font-size: 52px;
+            font-size: 42px;
             font-weight: 800;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            line-height: 1.1;
+            margin-bottom: 15px;
+            max-width: 800px;
         }
 
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 18px; max-width: 650px; color: var(--gray); margin-bottom: 35px; font-weight: 400; line-height: 1.6; }
+        .hero h1 span {
+            color: var(--primary);
+        }
 
-        section { padding: 110px 50px; }
+        .hero p {
+            font-size: 15px;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 70px 5%;
+        }
 
         .section-title {
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 60px;
-            text-transform: uppercase;
+            font-size: 28px;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            margin-bottom: 40px;
         }
 
-        .section-title span { color: var(--primary); }
+        .section-title span {
+            color: var(--primary);
+        }
 
-        /* Sobre */
         .about-content {
             display: flex;
             align-items: center;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
+            gap: 40px;
         }
 
-        .about-text { flex: 1; }
-        .about-text p { line-height: 1.7; color: var(--gray); margin-bottom: 20px; font-size: 15px; }
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
         .about-img {
             flex: 1;
-            height: 380px;
-            background: url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
-            border-radius: 14px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.06);
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
         }
 
-        /* Modalidades */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1150px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .service-card {
             background: var(--dark-card);
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.3s;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            background: var(--dark-surface);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-        }
-
-        .service-video-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: #111;
+            transform: translateY(-5px);
         }
 
         .service-video-container img {
             width: 100%;
-            height: 100%;
+            height: 180px;
             object-fit: cover;
-            filter: brightness(0.85);
-            transition: transform 0.5s ease;
-        }
-
-        .service-card:hover .service-video-container img {
-            transform: scale(1.05);
         }
 
         .service-content {
-            padding: 25px 20px;
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .service-content p {
+            color: var(--gray);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .plan-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 30px 20px;
             text-align: center;
-            flex: 1;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .service-content h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; color: white; }
-        .service-content p { color: var(--gray); font-size: 13px; line-height: 1.6; }
-
-        /* Planos */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 30px;
-            max-width: 1050px;
-            margin: 0 auto;
-        }
-
-        .plan-card {
-            background: var(--dark-card);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 14px;
-            padding: 45px 30px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
         .plan-card.active {
             border-color: var(--primary);
-            transform: scale(1.03);
-            background: var(--dark-surface);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
         }
 
-        .plan-card h3 { font-size: 22px; margin-bottom: 15px; font-weight: 700; }
-        .price { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 25px; }
-        .price span { font-size: 14px; color: var(--gray); font-weight: 500; }
-        .plan-card ul { list-style: none; margin-bottom: 35px; text-align: left; }
-        .plan-card ul li { margin-bottom: 12px; color: var(--gray); font-size: 14px; }
-        .plan-card ul li i { color: var(--primary); margin-right: 10px; }
+        .plan-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
 
-        /* Matrícula / Pagamento */
-        .contact-container {
+        .plan-card .price {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .plan-card .price span {
+            font-size: 12px;
+            color: var(--gray);
+            font-weight: normal;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
             display: flex;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 60px;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .contact-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
-        .contact-info p { color: var(--gray); font-size: 15px; display: flex; align-items: center; gap: 15px; }
-        .contact-info i { color: var(--primary); font-size: 20px; }
+        .plan-card ul li {
+            font-size: 13px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form select {
-            padding: 16px;
+        .plan-card ul li i {
+            color: var(--primary);
+        }
+
+        /* PAINEL ADMIN (OCULTO POR PADRÃO) */
+        #admin-section {
+            display: none;
+            background: #0a0a0a;
+        }
+
+        .admin-login-box {
+            max-width: 400px;
+            margin: 0 auto;
             background: var(--dark-card);
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+
+        .admin-login-box input {
+            width: 100%;
+            padding: 12px;
+            background: var(--dark);
             border: 1px solid rgba(255,255,255,0.08);
             color: white;
-            border-radius: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             font-size: 14px;
-            transition: border-color 0.3s;
         }
+
+        .admin-panel {
+            display: none;
+            background: var(--dark-card);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 25px;
+        }
+
+        .admin-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: var(--dark-surface);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.04);
+            text-align: center;
+        }
+
+        .stat-card h5 { color: var(--gray); font-size: 12px; margin-bottom: 5px; }
+        .stat-card span { font-size: 20px; font-weight: 800; color: white; }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        th {
+            background: var(--dark-surface);
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .badge.ativo { background: rgba(34, 197, 94, 0.15); color: var(--success); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .badge.pendente { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge.cancelado { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .btn-acao {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-acao:hover { background: var(--danger); color: white; }
+
+        .contact-container {
+            display: flex;
+            gap: 30px;
+            background: var(--dark-card);
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            word-break: break-word;
+        }
+
+        .contact-info p i {
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .contact-form {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form select {
+            width: 100%;
+            padding: 12px;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
         .contact-form input:focus, .contact-form select:focus {
             outline: none;
             border-color: var(--primary);
         }
+
         .contact-form select option {
             background: var(--dark-card);
             color: white;
@@ -287,13 +459,13 @@
         .contact-form button.btn-matricula {
             width: 100%;
             max-width: 320px;
-            padding: 16px;
+            padding: 14px;
             font-size: 15px;
             text-align: center;
             border-radius: 10px;
         }
 
-        /* FEEDBACK COM SUCESSO E BONECO 2D SUPINO */
+        /* FEEDBACK SUCESSO / NOTIFICAÇÃO */
         #feedback-sucesso {
             opacity: 0;
             visibility: hidden;
@@ -302,7 +474,7 @@
             background: var(--dark-card);
             border: 2px solid var(--primary);
             color: white;
-            padding: 30px 40px;
+            padding: 25px 20px;
             border-radius: 16px;
             box-shadow: 0 25px 60px rgba(0,0,0,0.8);
             display: flex;
@@ -311,13 +483,13 @@
             text-align: center;
             gap: 12px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             position: fixed;
             top: 50%;
             left: 50%;
             z-index: 4000;
             width: 90%;
-            max-width: 420px;
+            max-width: 380px;
         }
 
         #feedback-sucesso.mostrar {
@@ -330,16 +502,15 @@
             background: rgba(34, 197, 94, 0.15);
             color: #22c55e;
             border: 1px solid rgba(34, 197, 94, 0.4);
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.3px;
         }
 
         .supine-animation-container {
-            width: 140px;
-            height: 85px;
+            width: 130px;
+            height: 75px;
             margin-top: 5px;
             display: flex;
             justify-content: center;
@@ -348,7 +519,7 @@
 
         @keyframes benchPress {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-22px); }
+            50% { transform: translateY(-20px); }
         }
 
         .animated-barbell {
@@ -359,17 +530,17 @@
         /* CHATBOT */
         .chat-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             background: var(--primary);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
             z-index: 9999;
@@ -379,10 +550,10 @@
 
         .chat-container {
             position: fixed;
-            bottom: 100px;
-            right: 25px;
-            width: 360px;
-            height: 500px;
+            bottom: 90px;
+            right: 20px;
+            width: 340px;
+            height: 450px;
             background: var(--dark-card);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 14px;
@@ -395,31 +566,31 @@
 
         .chat-header {
             background: var(--dark-surface);
-            padding: 16px;
+            padding: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .chat-header h4 { font-size: 15px; color: white; display: flex; align-items: center; gap: 8px; }
+        .chat-header h4 { font-size: 14px; color: white; display: flex; align-items: center; gap: 8px; }
         .chat-header h4 i { color: var(--primary); }
         .close-chat { background: none; border: none; color: var(--gray); font-size: 18px; cursor: pointer; }
 
         .chat-messages {
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             font-size: 13px;
         }
-        .message { max-width: 85%; padding: 10px 14px; border-radius: 10px; line-height: 1.4; word-wrap: break-word; }
+        .message { max-width: 85%; padding: 10px 12px; border-radius: 10px; line-height: 1.4; word-wrap: break-word; }
         .message.bot { background: var(--dark-surface); color: #e4e4e7; align-self: flex-start; }
         .message.user { background: var(--primary); color: white; align-self: flex-end; }
 
         .chat-input-area {
-            padding: 12px;
+            padding: 10px;
             background: var(--dark-surface);
             display: flex;
             gap: 8px;
@@ -427,7 +598,7 @@
         }
         .chat-input-area input {
             flex: 1;
-            padding: 10px 14px;
+            padding: 10px;
             background: var(--dark);
             border: 1px solid rgba(255,255,255,0.08);
             color: white;
@@ -439,32 +610,276 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0 16px;
+            padding: 0 14px;
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.3s;
         }
-        .chat-input-area button:hover { background: var(--primary-dark); }
 
-        footer { background: #050608; text-align: center; padding: 25px; color: var(--gray); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { background: #020202; text-align: center; padding: 20px; color: var(--gray); font-size: 12px; border-top: 1px solid rgba(255,255,255,0.05); }
 
+        /* MEDIA QUERIES PARA CELULAR */
         @media (max-width: 768px) {
-            nav { display: none; }
-            .about-content, .contact-container { flex-direction: column; }
-            .hero h1 { font-size: 36px; }
-            .chat-container { width: 90%; right: 5%; height: 420px; }
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-card);
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            nav.ativo {
+                max-height: 350px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                text-align: center;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.03);
+            }
+
+            header .btn-matricula {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .about-content, .contact-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .chat-container {
+                width: 92%;
+                right: 4%;
+                bottom: 85px;
+                height: 400px;
+            }
         }
+
+        /* COMPONENTES REUTILIZÁVEIS */
+        .btn-hero {
+            padding: 14px 32px;
+            font-size: 15px;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            padding: 4px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .btn-escolher-plano {
+            display: block;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .chat-btn {
+            border: none;
+        }
+
+        .chat-container.ativo {
+            display: flex;
+        }
+
+        .imc-box {
+            max-width: 450px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group:last-of-type {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: var(--gray);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .btn-imc {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-imc:hover {
+            background: var(--primary-dark);
+        }
+
+        .admin-icon {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .admin-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .admin-description {
+            color: var(--gray);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .admin-heading {
+            font-size: 16px;
+        }
+
+        .admin-heading i {
+            color: var(--primary);
+        }
+
+        .stat-active { color: var(--success) !important; }
+        .stat-pending { color: var(--warning) !important; }
+        .stat-auto { color: var(--primary) !important; }
+
+        .logout-button {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+        }
+
+        .feedback-icon {
+            font-size: 26px;
+            color: var(--primary);
+        }
+
+        .footer { background: #020202; text-align: center; padding: 20px; color: var(--gray); font-size: 12px; border-top: 1px solid rgba(255,255,255,0.05); }
+
+
+        /* ===== ACABAMENTO VISUAL — NOVA PALETA ===== */
+        .logo span,
+        .hero h1 span,
+        .section-title span,
+        .plan-card .price,
+        .chat-header h4 i,
+        .admin-heading i,
+        .plan-card ul li i {
+            color: var(--primary);
+        }
+
+        .btn-matricula,
+        .btn-hero,
+        .btn-escolher-plano,
+        .btn-imc,
+        .chat-input-area button {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.22);
+        }
+
+        .btn-matricula:hover,
+        .btn-hero:hover,
+        .btn-escolher-plano:hover,
+        .btn-imc:hover,
+        .chat-input-area button:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 10px 28px rgba(212, 175, 55, 0.28);
+        }
+
+        .plan-card.active {
+            border-color: var(--primary);
+            box-shadow:
+                0 0 0 1px rgba(212, 175, 55, 0.15),
+                0 0 35px rgba(212, 175, 55, 0.18);
+        }
+
+        .about-img,
+        .plan-card,
+        .admin-login-box,
+        .admin-panel,
+        .imc-box,
+        .chat-container {
+            border-color: rgba(212, 175, 55, 0.12);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus,
+        .chat-input-area input:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.10);
+        }
+
+        .popular-badge {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            box-shadow: 0 6px 18px rgba(139, 92, 246, 0.24);
+        }
+
+        .chat-btn {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.28);
+        }
+
     </style>
 </head>
 <body>
 
     <!-- CHATBOT FLUTUANTE -->
-    <div class="chat-btn" id="chatBtnToggle"><i class="fa-solid fa-comments"></i></div>
+    <button class="chat-btn" id="chatBtnToggle" type="button" aria-label="Abrir assistente virtual"><i class="fa-solid fa-comments"></i></button>
 
-    <div class="chat-container" id="chatContainer">
+    <div class="chat-container" id="chatContainer" aria-hidden="true">
         <div class="chat-header">
             <h4><i class="fa-solid fa-robot"></i> Assistente RH Fitness</h4>
-            <button class="close-chat" id="chatCloseBtn">&times;</button>
+            <button class="close-chat" id="chatCloseBtn" type="button" aria-label="Fechar chat">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
             <div class="message bot">Fala, maromba! Sou o assistente virtual da RH Fitness. Posso tirar dúvidas sobre treinos, planos, horários e suplementos. Como posso ajudar?</div>
@@ -477,15 +892,17 @@
 
     <!-- CABEÇALHO -->
     <header>
-        <a href="#home" class="logo">RH <span>Fitness</span></a>
-        <nav>
+        <!-- CLIQUE DUPLO NA LOGO ABRE O PAINEL ADMIN -->
+        <a href="#home" class="logo" id="logoAdminTrigger">RH <span>Fitness</span></a>
+        <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+        <nav id="navMenu">
             <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#modalidades">Modalidades</a></li>
-                <li><a href="#planos">Planos</a></li>
-                <li><a href="#calculadora">Calculadora IMC</a></li>
-                <li><a href="#contato">Matrícula</a></li>
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#modalidades" class="nav-link">Modalidades</a></li>
+                <li><a href="#planos" class="nav-link">Planos</a></li>
+                <li><a href="#calculadora" class="nav-link">Calculadora IMC</a></li>
+                <li><a href="#contato" class="nav-link">Matrícula</a></li>
             </ul>
         </nav>
         <a href="#contato" class="btn-matricula">Matricule-se</a>
@@ -495,7 +912,7 @@
     <section id="home" class="hero">
         <h1>Supere Seus Limites na <span>RH Fitness</span></h1>
         <p>Estrutura completa, equipamentos de alta tecnologia e acompanhamento profissional para você alcançar a sua melhor versão.</p>
-        <a href="#contato" class="btn-matricula" style="padding: 14px 32px; font-size: 15px;">Comece Agora</a>
+        <a href="#contato" class="btn-matricula btn-hero">Comece Agora</a>
     </section>
 
     <!-- SOBRE -->
@@ -511,13 +928,12 @@
     </section>
 
     <!-- MODALIDADES -->
-    <section id="modalidades" style="background: #0e1017;">
+    <section id="modalidades" style="background: #0a0a0a;">
         <h2 class="section-title">Nossas <span>Modalidades</span></h2>
         <div class="services-grid">
-            
             <div class="service-card">
                 <div class="service-video-container">
-                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Musculação">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Musculação" loading="lazy" decoding="async">
                 </div>
                 <div class="service-content">
                     <div>
@@ -529,7 +945,7 @@
 
             <div class="service-card">
                 <div class="service-video-container">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Treinamento Funcional">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Treinamento Funcional" loading="lazy" decoding="async">
                 </div>
                 <div class="service-content">
                     <div>
@@ -541,7 +957,7 @@
 
             <div class="service-card">
                 <div class="service-video-container">
-                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80" alt="Cardio Avançado">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80" alt="Cardio Avançado" loading="lazy" decoding="async">
                 </div>
                 <div class="service-content">
                     <div>
@@ -550,7 +966,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -560,52 +975,113 @@
         <div class="plans-grid">
             <div class="plan-card">
                 <h3>Plano Mensal</h3>
-                <div class="price">R$ 89,90 <span>/mês</span></div>
+                <div class="price">R$ 90,00 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Acesso livre à musculação</li>
                     <li><i class="fa-solid fa-check"></i> Horário flexível</li>
                 </ul>
-                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Mensal (R$ 89,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Mensal (R$ 90,00/mês)">Escolher Plano</button>
             </div>
 
             <div class="plan-card active">
                 <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); padding: 4px 16px; font-size: 11px; font-weight: 700; border-radius: 20px; letter-spacing: 0.5px;">MAIS POPULAR</div>
                 <h3>Plano Semestral</h3>
-                <div class="price">R$ 74,90 <span>/mês</span></div>
+                <div class="price">R$ 150,00 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Acesso total à academia</li>
                     <li><i class="fa-solid fa-check"></i> Acompanhamento com instrutores</li>
                     <li><i class="fa-solid fa-check"></i> Congele por até 30 dias</li>
                 </ul>
-                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Semestral (R$ 74,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Semestral (R$ 150,00/mês)">Escolher Plano</button>
             </div>
 
             <div class="plan-card">
                 <h3>Plano Anual VIP</h3>
-                <div class="price">R$ 64,90 <span>/mês</span></div>
+                <div class="price">R$ 250,00 <span>/mês</span></div>
                 <ul>
                     <li><i class="fa-solid fa-check"></i> Todos os benefícios inclusos</li>
                     <li><i class="fa-solid fa-check"></i> Camisa exclusiva RH Fitness</li>
                 </ul>
-                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Anual VIP (R$ 64,90/mês)" style="display: block; width: 100%; text-align: center; border-radius: 8px;">Escolher Plano</button>
+                <button class="btn-matricula btn-escolher-plano" data-plano="Plano Anual VIP (R$ 250,00/mês)">Escolher Plano</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAINEL ADMINISTRATIVO (INICIALMENTE OCULTO) -->
+    <section id="admin-section">
+        <h2 class="section-title">Painel <span>Administrativo</span></h2>
+        
+        <!-- TELA DE LOGIN DO ADMIN -->
+        <div class="admin-login-box" id="adminLoginBox">
+            <i class="fa-solid fa-lock admin-icon"></i>
+            <h3 class="admin-title">Acesso Restrito</h3>
+            <p class="admin-description">Insira as credenciais de acesso</p>
+            <input type="text" id="adminUser" placeholder="Usuário" autocomplete="username">
+            <input type="password" id="adminPassword" placeholder="Senha" autocomplete="current-password">
+            <button class="btn-matricula btn-full" id="btnLoginAdmin" type="button">Entrar no Painel</button>
+            <p id="adminLoginError" style="color: var(--danger); font-size: 12px; margin-top: 10px; display: none;">Usuário ou senha incorretos!</p>
+        </div>
+
+        <!-- PAINEL DE GESTÃO -->
+        <div class="admin-panel" id="adminPanel">
+            <div class="admin-header-flex">
+                <h3 class="admin-heading"><i class="fa-solid fa-users-gear"></i> Gestão de Alunos e Matrículas</h3>
+                <button class="btn-acao logout-button" id="btnLogoutAdmin" type="button">Sair do Painel</button>
+            </div>
+
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h5>Total de Alunos</h5>
+                    <span id="statTotal">0</span>
+                </div>
+                <div class="stat-card">
+                    <h5>Ativos</h5>
+                    <span id="statAtivos" class="stat-active">0</span>
+                </div>
+                <div class="stat-card">
+                    <h5>Pendentes</h5>
+                    <span id="statPendentes" class="stat-pending">0</span>
+                </div>
+                <div class="stat-card">
+                    <h5>Débito Automático</h5>
+                    <span id="statDebito" class="stat-auto">0</span>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Aluno</th>
+                            <th>CPF</th>
+                            <th>Plano</th>
+                            <th>Pagamento / Débito Auto</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <!-- CALCULADORA IMC -->
-    <section id="calculadora" style="background: #0e1017; text-align: center;">
+    <section id="calculadora" style="background: #0a0a0a; text-align: center;">
         <h2 class="section-title">Calculadora de <span>IMC</span></h2>
-        <div style="max-width: 450px; margin: 0 auto; background: var(--dark-card); padding: 35px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.06);">
+        <div class="imc-box">
             <div style="margin-bottom: 15px; text-align: left;">
                 <label style="font-size: 13px; color: var(--gray); display: block; margin-bottom: 6px;">Peso (kg)</label>
-                <input type="number" id="peso" placeholder="Ex: 70" step="0.1" style="width: 100%; padding: 14px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
+                <input type="number" id="peso" placeholder="Ex: 70" step="0.1" style="width: 100%; padding: 12px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
             </div>
             <div style="margin-bottom: 20px; text-align: left;">
                 <label style="font-size: 13px; color: var(--gray); display: block; margin-bottom: 6px;">Altura (m)</label>
-                <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" style="width: 100%; padding: 14px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
+                <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" style="width: 100%; padding: 12px; background: var(--dark); border: 1px solid rgba(255,255,255,0.08); color: white; border-radius: 8px;">
             </div>
-            <button id="btnCalcularIMC" style="width: 100%; background: var(--primary); color: white; border: none; padding: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: background 0.3s; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);">Calcular IMC</button>
-            <div id="resultado-imc" style="margin-top: 20px; font-size: 15px; font-weight: 600;"></div>
+            <button id="btnCalcularIMC" class="btn-imc" type="button">Calcular IMC</button>
+            <div id="resultado-imc" style="margin-top: 20px; font-size: 14px; font-weight: 600;"></div>
         </div>
     </section>
 
@@ -615,28 +1091,28 @@
         <div class="contact-container">
             <div class="contact-info">
                 <p><i class="fa-solid fa-location-dot"></i> Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP</p>
-                <p><i class="fa-solid fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fa-solid fa-phone"></i> (11) 96716-1959</p>
                 <p><i class="fa-solid fa-envelope"></i> contato@rhfitness.com.br</p>
-                <p><i class="fa-solid fa-shield-check"></i> Pagamento 100% seguro e processado instantaneamente.</p>
+                <p><i class="fa-solid fa-shield-check"></i> Pagamento 100% seguro e instantâneo.</p>
             </div>
             
             <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Seu Nome Completo" required>
-                <input type="text" id="inputCpf" placeholder="CPF (Ex: 000.000.000-00)" required>
-                <input type="email" placeholder="Seu E-mail" required>
+                <input type="text" id="inputNome" placeholder="Seu Nome Completo" autocomplete="name" required>
+                <input type="text" id="inputCpf" placeholder="CPF (Ex: 000.000.000-00)" inputmode="numeric" autocomplete="off" maxlength="14" required>
+                <input type="email" id="inputEmail" placeholder="Seu E-mail" autocomplete="email" required>
                 
                 <select id="planoSelecionado" required>
                     <option value="" disabled selected>Plano Selecionado</option>
-                    <option value="Plano Mensal (R$ 89,90/mês)">Plano Mensal (R$ 89,90/mês)</option>
-                    <option value="Plano Semestral (R$ 74,90/mês)">Plano Semestral (R$ 74,90/mês)</option>
-                    <option value="Plano Anual VIP (R$ 64,90/mês)">Plano Anual VIP (R$ 64,90/mês)</option>
+                    <option value="Plano Mensal (R$ 90,00/mês)">Plano Mensal (R$ 90,00/mês)</option>
+                    <option value="Plano Semestral (R$ 150,00/mês)">Plano Semestral (R$ 150,00/mês)</option>
+                    <option value="Plano Anual VIP (R$ 250,00/mês)">Plano Anual VIP (R$ 250,00/mês)</option>
                 </select>
 
                 <select id="formaPagamento" required>
                     <option value="" disabled selected>Selecione a Forma de Pagamento</option>
                     <option value="pix">PIX (Aprovação Instantânea)</option>
-                    <option value="cartao">Cartão de Crédito</option>
-                    <option value="boleto">Boleto Bancário</option>
+                    <option value="cartao">Cartão de Crédito (Débito Automático)</option>
+                    <option value="boleto">Boleto Bancário (Pendente de Compensação)</option>
                 </select>
                 
                 <div class="btn-center-wrapper">
@@ -646,14 +1122,14 @@
         </div>
     </section>
 
-    <!-- FEEDBACK SUCESSO + PIX + BONECO SUPINO -->
+    <!-- FEEDBACK SUCESSO / NOTIFICAÇÃO -->
     <div id="feedback-sucesso">
-        <div class="pix-success-badge"><i class="fa-solid fa-check-circle"></i> PIX Realizado com Sucesso!</div>
-        <i class="fa-solid fa-circle-check"></i>
-        <span>Matrícula confirmada! Bem-vindo à RH Fitness.</span>
+        <div class="pix-success-badge" id="badgeFeedback"><i class="fa-solid fa-check-circle"></i> <span id="badgeText">Matrícula Realizada!</span></div>
+        <i class="fa-solid fa-circle-check feedback-icon" id="iconFeedback"></i>
+        <span id="textoFeedback">Bem-vindo à RH Fitness. Seu acesso já está liberado!</span>
         
         <div class="supine-animation-container">
-            <svg width="130" height="85" viewBox="0 0 130 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="120" height="75" viewBox="0 0 130 85" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="25" y="55" width="80" height="8" rx="3" fill="#3f3f46"/>
                 <rect x="40" y="63" width="8" height="18" rx="2" fill="#27272a"/>
                 <rect x="82" y="63" width="8" height="18" rx="2" fill="#27272a"/>
@@ -672,126 +1148,423 @@
         </div>
     </div>
 
-    <footer><p>&copy; 2026 Academia RH Fitness. Todos os direitos reservados.</p></footer>
+    <footer class="footer"><p>&copy; 2026 Academia RH Fitness. Todos os direitos reservados.</p></footer>
 
     <!-- SCRIPTS -->
     <script>
-        const chatContainer = document.getElementById('chatContainer');
-        const chatBtnToggle = document.getElementById('chatBtnToggle');
-        const chatCloseBtn = document.getElementById('chatCloseBtn');
+        'use strict';
 
-        chatBtnToggle.addEventListener('click', () => chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex');
-        chatCloseBtn.addEventListener('click', () => chatContainer.style.display = 'none');
+        // =========================
+        // CONFIGURAÇÕES
+        // =========================
+        const CONFIG = {
+            storageKey: 'rh_alunos',
+            adminUser: 'root',
+            adminPassword: 'master',
+            feedbackDuration: 4800,
+            botDelay: 500
+        };
 
-        const chatInput = document.getElementById('chatInput');
-        const chatSendBtn = document.getElementById('chatSendBtn');
+        // =========================
+        // ESTADO
+        // =========================
+        const alunosPadrao = [
+            {
+                id: 1,
+                nome: 'Carlos Silva',
+                cpf: '123.456.789-00',
+                plano: 'Plano Semestral (R$ 150,00/mês)',
+                pagamento: 'Cartão (Débito Automático)',
+                status: 'ativo'
+            },
+            {
+                id: 2,
+                nome: 'Ana Souza',
+                cpf: '987.654.321-11',
+                plano: 'Plano Mensal (R$ 90,00/mês)',
+                pagamento: 'Boleto Bancário',
+                status: 'pendente'
+            }
+        ];
 
-        // FUNÇÃO DE FILTRO RESTRITO AO ASSUNTO DE ACADEMIA
+        let listaAlunos = carregarAlunos();
+
+        // =========================
+        // HELPERS
+        // =========================
+        const $ = (selector) => document.querySelector(selector);
+        const $$ = (selector) => document.querySelectorAll(selector);
+
+        function carregarAlunos() {
+            try {
+                const dados = localStorage.getItem(CONFIG.storageKey);
+                return dados ? JSON.parse(dados) : [...alunosPadrao];
+            } catch (error) {
+                console.error('Erro ao carregar alunos:', error);
+                return [...alunosPadrao];
+            }
+        }
+
+        function salvarAlunos() {
+            localStorage.setItem(CONFIG.storageKey, JSON.stringify(listaAlunos));
+            atualizarTabelaAdmin();
+        }
+
+        function escaparHTML(valor) {
+            return String(valor)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function mostrarFeedback(mensagem, badge = 'Matrícula Realizada!', duracao = CONFIG.feedbackDuration) {
+            const feedback = $('#feedback-sucesso');
+            const badgeText = $('#badgeText');
+            const textoFeedback = $('#textoFeedback');
+
+            badgeText.textContent = badge;
+            textoFeedback.innerHTML = mensagem;
+            feedback.classList.add('mostrar');
+
+            window.clearTimeout(feedback._timer);
+            feedback._timer = window.setTimeout(() => {
+                feedback.classList.remove('mostrar');
+            }, duracao);
+        }
+
+        function normalizarTexto(texto) {
+            return texto
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // =========================
+        // PAINEL ADMINISTRATIVO
+        // =========================
+        const logoAdminTrigger = $('#logoAdminTrigger');
+        const adminSection = $('#admin-section');
+        const adminLoginBox = $('#adminLoginBox');
+        const adminPanel = $('#adminPanel');
+        const btnLoginAdmin = $('#btnLoginAdmin');
+        const adminUser = $('#adminUser');
+        const adminPassword = $('#adminPassword');
+        const adminLoginError = $('#adminLoginError');
+        const btnLogoutAdmin = $('#btnLogoutAdmin');
+
+        logoAdminTrigger.addEventListener('dblclick', (event) => {
+            event.preventDefault();
+            adminSection.style.display = 'block';
+            adminSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        btnLoginAdmin.addEventListener('click', () => {
+            const acessoValido =
+                adminUser.value === CONFIG.adminUser &&
+                adminPassword.value === CONFIG.adminPassword;
+
+            if (!acessoValido) {
+                adminLoginError.style.display = 'block';
+                return;
+            }
+
+            adminLoginBox.style.display = 'none';
+            adminPanel.style.display = 'block';
+            adminLoginError.style.display = 'none';
+            atualizarTabelaAdmin();
+        });
+
+        adminPassword.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') btnLoginAdmin.click();
+        });
+
+        btnLogoutAdmin.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+            adminLoginBox.style.display = 'block';
+            adminUser.value = '';
+            adminPassword.value = '';
+            adminSection.style.display = 'none';
+
+            mostrarFeedback(
+                'Até breve! O painel administrativo foi ocultado com segurança.',
+                'Sessão Encerrada',
+                4200
+            );
+
+            window.setTimeout(() => {
+                $('#badgeText').textContent = 'Matrícula Realizada!';
+            }, 4600);
+        });
+
+        function atualizarTabelaAdmin() {
+            const tbody = $('#adminTableBody');
+
+            const estatisticas = listaAlunos.reduce(
+                (acc, aluno) => {
+                    acc.total++;
+                    if (aluno.status === 'ativo') acc.ativos++;
+                    if (aluno.status === 'pendente') acc.pendentes++;
+                    if (aluno.pagamento.includes('Débito Automático')) acc.debitoAuto++;
+                    return acc;
+                },
+                { total: 0, ativos: 0, pendentes: 0, debitoAuto: 0 }
+            );
+
+            $('#statTotal').textContent = estatisticas.total;
+            $('#statAtivos').textContent = estatisticas.ativos;
+            $('#statPendentes').textContent = estatisticas.pendentes;
+            $('#statDebito').textContent = estatisticas.debitoAuto;
+
+            tbody.innerHTML = listaAlunos.map((aluno) => {
+                const statusInfo = {
+                    ativo: { classe: 'ativo', texto: 'Ativo' },
+                    pendente: { classe: 'pendente', texto: 'Pendente' },
+                    cancelado: { classe: 'cancelado', texto: 'Cancelado' }
+                }[aluno.status] || { classe: 'cancelado', texto: 'Cancelado' };
+
+                const acao = aluno.status !== 'cancelado'
+                    ? `<button class="btn-acao btn-cancelar" type="button" data-id="${aluno.id}">
+                        <i class="fa-solid fa-ban"></i> Cancelar
+                       </button>`
+                    : '<span style="color:var(--gray); font-size:11px;">Encerrado</span>';
+
+                return `
+                    <tr>
+                        <td><strong>${escaparHTML(aluno.nome)}</strong></td>
+                        <td>${escaparHTML(aluno.cpf)}</td>
+                        <td>${escaparHTML(aluno.plano)}</td>
+                        <td>${escaparHTML(aluno.pagamento)}</td>
+                        <td><span class="badge ${statusInfo.classe}">${statusInfo.texto}</span></td>
+                        <td>${acao}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        $('#adminTableBody').addEventListener('click', (event) => {
+            const botao = event.target.closest('.btn-cancelar');
+            if (!botao) return;
+
+            cancelarInscricao(Number(botao.dataset.id));
+        });
+
+        function cancelarInscricao(id) {
+            const aluno = listaAlunos.find((item) => item.id === id);
+            if (!aluno) return;
+
+            if (!confirm(`Deseja realmente cancelar a inscrição de ${aluno.nome}?`)) return;
+
+            aluno.status = 'cancelado';
+            salvarAlunos();
+        }
+
+        // =========================
+        // MENU MOBILE
+        // =========================
+        const menuToggle = $('#menuToggle');
+        const navMenu = $('#navMenu');
+
+        menuToggle.addEventListener('click', (event) => {
+            event.stopPropagation();
+            navMenu.classList.toggle('ativo');
+        });
+
+        $$('.nav-link').forEach((link) => {
+            link.addEventListener('click', () => navMenu.classList.remove('ativo'));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('ativo');
+            }
+        });
+
+        // =========================
+        // MATRÍCULA
+        // =========================
+        const contactForm = $('#contactForm');
+        const selectPlanoMatricula = $('#planoSelecionado');
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const nome = $('#inputNome').value.trim();
+            const cpf = $('#inputCpf').value.trim();
+            const plano = selectPlanoMatricula.value;
+            const formaPagamento = $('#formaPagamento').value;
+
+            const pagamentos = {
+                pix: {
+                    texto: 'PIX (À vista)',
+                    status: 'ativo'
+                },
+                cartao: {
+                    texto: 'Cartão (Débito Automático)',
+                    status: 'ativo'
+                },
+                boleto: {
+                    texto: 'Boleto (Pendente)',
+                    status: 'pendente'
+                }
+            };
+
+            const pagamento = pagamentos[formaPagamento];
+            if (!pagamento) return;
+
+            listaAlunos.push({
+                id: Date.now(),
+                nome,
+                cpf,
+                plano,
+                pagamento: pagamento.texto,
+                status: pagamento.status
+            });
+
+            salvarAlunos();
+
+            const mensagem = pagamento.status === 'ativo'
+                ? `Parabéns, ${escaparHTML(nome)}! Sua matrícula está ativa e o acesso liberado.`
+                : 'Matrícula registrada! Aguardando compensação do boleto para liberação.';
+
+            mostrarFeedback(mensagem);
+            contactForm.reset();
+        });
+
+        // Escolha rápida de plano
+        $$('.btn-escolher-plano').forEach((botao) => {
+            botao.addEventListener('click', (event) => {
+                event.preventDefault();
+                selectPlanoMatricula.value = botao.dataset.plano;
+                $('#contato').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Máscara de CPF
+        $('#inputCpf').addEventListener('input', (event) => {
+            let valor = event.target.value.replace(/\D/g, '').slice(0, 11);
+
+            if (valor.length > 9) {
+                valor = valor.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+            } else if (valor.length > 6) {
+                valor = valor.replace(/^(\d{3})(\d{3})(\d{3}).*/, '$1.$2.$3');
+            } else if (valor.length > 3) {
+                valor = valor.replace(/^(\d{3})(\d{3}).*/, '$1.$2');
+            }
+
+            event.target.value = valor;
+        });
+
+        // =========================
+        // CALCULADORA DE IMC
+        // =========================
+        $('#btnCalcularIMC').addEventListener('click', () => {
+            const peso = Number.parseFloat($('#peso').value);
+            const altura = Number.parseFloat($('#altura').value);
+            const resultado = $('#resultado-imc');
+
+            if (!peso || !altura || peso <= 0 || altura <= 0) {
+                resultado.textContent = 'Insira peso e altura válidos!';
+                resultado.style.color = 'var(--primary)';
+                return;
+            }
+
+            const imc = peso / (altura * altura);
+            const classificacao =
+                imc < 18.5 ? 'Abaixo do peso' :
+                imc < 25 ? 'Peso normal' :
+                imc < 30 ? 'Sobrepeso' :
+                'Obesidade';
+
+            resultado.textContent = `Seu IMC é ${imc.toFixed(2)} (${classificacao})`;
+            resultado.style.color = 'white';
+        });
+
+        // =========================
+        // CHATBOT
+        // =========================
+        const chatContainer = $('#chatContainer');
+        const chatBtnToggle = $('#chatBtnToggle');
+        const chatCloseBtn = $('#chatCloseBtn');
+        const chatInput = $('#chatInput');
+        const chatSendBtn = $('#chatSendBtn');
+        const chatMessages = $('#chatMessages');
+
+        function alternarChat(abrir) {
+            chatContainer.classList.toggle('ativo', abrir);
+            chatContainer.setAttribute('aria-hidden', String(!abrir));
+
+            if (abrir) chatInput.focus();
+        }
+
+        chatBtnToggle.addEventListener('click', () => {
+            alternarChat(!chatContainer.classList.contains('ativo'));
+        });
+
+        chatCloseBtn.addEventListener('click', () => alternarChat(false));
+
         function obterRespostaBot(mensagem) {
-            const texto = mensagem.toLowerCase();
-            
-            // Palavras-chave permitidas relacionadas à academia, treinos, planos, horários, localização, etc.
+            const texto = normalizarTexto(mensagem);
+
             const permitidas = [
-                'treino', 'exercicio', 'musculacao', 'funcional', 'cardio', 'peso', 'massa', 
-                'hipertrofia', 'emagrecimento', 'plano', 'preco', 'valor', 'mensalidade', 
-                'horario', 'funciona', 'abre', 'endereco', 'onde', 'local', 'matricula', 
-                'suplemento', 'academia', 'imc', 'pagamento', 'pix', 'cartao', 'boleto', 'ola', 'oi', 'bom dia', 'boa tarde', 'boa noite'
+                'treino', 'exercicio', 'musculacao', 'funcional', 'cardio',
+                'peso', 'massa', 'hipertrofia', 'emagrecimento', 'plano',
+                'preco', 'valor', 'mensalidade', 'horario', 'funciona',
+                'abre', 'endereco', 'onde', 'local', 'matricula', 'suplemento',
+                'academia', 'imc', 'pagamento', 'pix', 'cartao', 'boleto',
+                'ola', 'oi'
             ];
 
-            // Verifica se a mensagem contém pelo menos uma palavra do universo de academia
-            const assuntoValido = permitidas.some(termo => texto.includes(termo));
+            const assuntoValido = permitidas.some((termo) => texto.includes(termo));
 
             if (!assuntoValido) {
-                return "Opa, foco no treino! Só consigo responder dúvidas referentes à <strong>Academia RH Fitness</strong>, planos, horários ou exercícios. Como posso te ajudar com seu shape hoje?";
+                return 'Opa, foco no treino! Só consigo responder dúvidas referentes à <strong>Academia RH Fitness</strong>, planos, horários ou exercícios.';
             }
 
-            if (texto.includes('treino') || texto.includes('exercicio') || texto.includes('musculacao')) {
-                return "Para ótimos resultados, foque em uma execução perfeita. Nossa área de musculação e funcional está completa para te receber!";
-            } else if (texto.includes('plano') || texto.includes('preco') || texto.includes('valor') || texto.includes('mensalidade')) {
-                return "Temos o Plano Mensal (R$ 89,90), Semestral (R$ 74,90/mês - o mais popular) e Anual VIP (R$ 64,90/mês). Qual deles encaixa melhor na sua rotina?";
-            } else if (texto.includes('horario') || texto.includes('funciona') || texto.includes('abre')) {
-                return "Atendemos de segunda a sexta das 06h às 22h, e aos sábados das 08h às 14h.";
-            } else if (texto.includes('endereco') || texto.includes('onde') || texto.includes('local')) {
-                return "Nosso endereço é Rua Antônio José Bastos, 238 - Parque Regina, São Paulo - SP.";
-            } else {
-                return "Perfeito, maromba! Se precisar de detalhes sobre nossos planos, valores ou fichas de treino, é só mandar aqui.";
+            if (texto.includes('treino') || texto.includes('exercicio')) {
+                return 'Para ótimos resultados, foque em uma execução perfeita. Nossa área de musculação está completa!';
             }
+
+            if (texto.includes('plano') || texto.includes('preco') || texto.includes('valor')) {
+                return 'Temos o Plano Mensal (R$ 90,00), Semestral (R$ 150,00/mês) e Anual VIP (R$ 250,00/mês).';
+            }
+
+            if (texto.includes('horario') || texto.includes('funciona') || texto.includes('abre')) {
+                return 'Atendemos de segunda a sexta das 06h às 22h, e aos sábados das 08h às 14h.';
+            }
+
+            return 'Perfeito, maromba! Se precisar de detalhes sobre nossos planos ou valores, é só mandar aqui.';
+        }
+
+        function adicionarMensagem(texto, remetente) {
+            const mensagem = document.createElement('div');
+            mensagem.className = `message ${remetente}`;
+            mensagem.innerHTML = texto;
+            chatMessages.appendChild(mensagem);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
         function enviarMensagem() {
             const texto = chatInput.value.trim();
             if (!texto) return;
-            adicionarMensagem(texto, 'user');
-            chatInput.value = '';
-            setTimeout(() => {
-                const resposta = obterRespostaBot(texto);
-                adicionarMensagem(resposta, 'bot');
-            }, 500);
-        }
 
-        function adicionarMensagem(texto, remetente) {
-            const messagesDiv = document.getElementById('chatMessages');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${remetente}`;
-            msgDiv.innerHTML = texto;
-            messagesDiv.appendChild(msgDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            adicionarMensagem(escaparHTML(texto), 'user');
+            chatInput.value = '';
+
+            window.setTimeout(() => {
+                adicionarMensagem(obterRespostaBot(texto), 'bot');
+            }, CONFIG.botDelay);
         }
 
         chatSendBtn.addEventListener('click', enviarMensagem);
-        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') enviarMensagem(); });
 
-        // Selecionar plano automaticamente e rolar até a matrícula
-        const botoesPlano = document.querySelectorAll('.btn-escolher-plano');
-        const selectPlanoMatricula = document.getElementById('planoSelecionado');
-
-        botoesPlano.forEach(botao => {
-            botao.addEventListener('click', function(e) {
-                e.preventDefault();
-                const planoEscolhido = this.getAttribute('data-plano');
-                selectPlanoMatricula.value = planoEscolhido;
-                document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
-            });
+        chatInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') enviarMensagem();
         });
 
-        // Máscara de CPF
-        const inputCpf = document.getElementById('inputCpf');
-        inputCpf.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            if (value.length > 9) {
-                value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
-            } else if (value.length > 6) {
-                value = value.replace(/^(\d{3})(\d{3})(\d{3}).*/, '$1.$2.$3');
-            } else if (value.length > 3) {
-                value = value.replace(/^(\d{3})(\d{3}).*/, '$1.$2');
-            }
-            e.target.value = value;
-        });
-
-        // Envio do formulário
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const feedback = document.getElementById('feedback-sucesso');
-            feedback.classList.add('mostrar');
-            this.reset();
-            setTimeout(() => feedback.classList.remove('mostrar'), 4800);
-        });
-
-        // Calculadora de IMC
-        document.getElementById('btnCalcularIMC').addEventListener('click', function() {
-            const peso = parseFloat(document.getElementById('peso').value);
-            const altura = parseFloat(document.getElementById('altura').value);
-            const res = document.getElementById('resultado-imc');
-            if (!peso || !altura || peso <= 0 || altura <= 0) {
-                res.innerHTML = "Insira peso e altura válidos!";
-                res.style.color = "#2563eb";
-                return;
-            }
-            const imc = peso / (altura * altura);
-            res.innerHTML = `Seu IMC é ${imc.toFixed(2)}`;
-            res.style.color = "white";
-        });
+        // Renderização inicial
+        atualizarTabelaAdmin();
     </script>
 </body>
 </html>
